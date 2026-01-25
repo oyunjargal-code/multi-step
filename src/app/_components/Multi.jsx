@@ -1,38 +1,56 @@
 "use client";
 
-import { useState } from "react";
-import { Continue } from "./Continue";
-import { FirstName } from "./FirstName";
-import { LastName } from "./LastName";
-import { Username } from "./UserName";
+const { useState } = require("react");
 
-export const Multi = () => {
-  const [inputFirstValue, setInputFirstValue] = useState("");
-
-  const inputFirst = () => {};
-
-  const handleAdd = () => {
-    console.log(inputFirstValue);
-  };
-
+const Multi = () => {
+  const [firstName, setFirsName] = useState("");
   return (
-    <div className="bg-[#f4f4f4] h-screen">
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="w-100 h-150 bg-white rounded-sm">
-          <img className="w-10 h-10 mt-8 ml-8" src="/logo.png" alt="logo" />
-          <h1 className="font-bold ml-8 mt-4">Join Us! 😎</h1>
-          <p className="text-sm ml-8 text-[#8e8e8e]">
-            Please provide all current information accurately.
-          </p>
-          <FirstName inputFirst={inputFirst} />
-          <LastName />
-          <Username />
-          <Continue handleAdd={handleAdd} />
-        </div>
-      </div>
+    <div>
+      <Input
+        label="Firstname"
+        value={firstName}
+        onChange={onChangeFirstName}
+        error=""
+        require={false}
+      />
+      <button onClick={onSubmit}>submit</button>
     </div>
   );
 };
+
+// import { useState } from "react";
+// import { Continue } from "./Continue";
+// import { FirstName } from "./FirstName";
+// import { LastName } from "./LastName";
+// import { Username } from "./UserName";
+
+// export const Multi = () => {
+//   const [inputFirstValue, setInputFirstValue] = useState("");
+
+//   const inputFirst = () => {};
+
+//   const handleAdd = () => {
+//     console.log(inputFirstValue);
+//   };
+
+//   return (
+//     <div className="bg-[#f4f4f4] h-screen">
+//       <div className="flex justify-center items-center min-h-screen">
+//         <div className="w-100 h-150 bg-white rounded-sm">
+//           <img className="w-10 h-10 mt-8 ml-8" src="/logo.png" alt="logo" />
+//           <h1 className="font-bold ml-8 mt-4">Join Us! 😎</h1>
+//           <p className="text-sm ml-8 text-[#8e8e8e]">
+//             Please provide all current information accurately.
+//           </p>
+//           <FirstName inputFirst={inputFirst} />
+//           <LastName />
+//           <Username />
+//           <Continue handleAdd={handleAdd} />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
 // "use client"
 
