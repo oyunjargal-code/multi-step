@@ -1,5 +1,5 @@
-import { Multi } from "./_components/Multi";
+import { Form } from "./_components/Form";
 
 export default function Home() {
-  return <Multi />;
+  return <Form />;
 }
