@@ -1,34 +1,110 @@
 "use client";
 
-const { useState } = require("react");
+import { useState } from "react";
 
 export const Multi = () => {
-  const [firstName, setFirsName] = useState("");
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+  });
 
-  const onChangeFirstName = (e) => {
-    setFirsName(e.target.value);
+  const [formError, setFormError] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+  });
+
+  const onChange = (event) => {
+    const { name, value } = event.target;
+
+    const newFormData = { ...formData, [name]: value };
+
+    setFormData(newFormData);
   };
 
   const onSubmit = () => {
-    console.log(firstName);
+    if (formData.firstName === "") {
+      setFormError((prev) => ({
+        ...prev,
+        firstName: "hooson bj bolohgui",
+      }));
+    } else {
+      setFormError((prev) => ({
+        ...prev,
+        firstName: "",
+      }));
+    }
+    if (formData.lastName === "") {
+      setFormError((prev) => ({
+        ...prev,
+        lastName: "hooson bj bolohgui",
+      }));
+    } else {
+      setFormError((prev) => ({
+        ...prev,
+        lastName: "",
+      }));
+    }
+    if (formData.userName === "") {
+      setFormError((prev) => ({
+        ...prev,
+        userName: "hooson bj bolohgui",
+      }));
+    } else {
+      setFormError((prev) => ({
+        ...prev,
+        userName: "",
+      }));
+    }
+    console.log("hi");
   };
 
   return (
     <div>
       <Input
-        label="Firstname"
-        value={firstName}
-        onChange={onChangeFirstName}
-        error=""
+        name="firstName"
+        label="First name"
+        placeholder="Нэрээ оруулна уу?"
+        value={formData.firstName}
+        onChange={onChange}
+        error={formError.firstName}
         require={false}
       />
-      <button onClick={onSubmit}>submit</button>
+      <Input
+        name="lastName"
+        label="Last name"
+        placeholder="Овогоо оруулна уу?"
+        value={formData.lastName}
+        onChange={onChange}
+        error={formError.lastName}
+        require={false}
+      />
+      <Input
+        name="userName"
+        label="User name"
+        placeholder="Хэрэглэгчийн нэрээ оруулна уу?"
+        value={formData.userName}
+        onChange={onChange}
+        error={formError.userName}
+        require={false}
+      />
+      <button onClick={onSubmit}>Continue</button>
     </div>
   );
 };
 
 const Input = (props) => {
-  const { type = "text", value, onChange, name, label, error, require } = props;
+  const {
+    type = "text",
+    value,
+    placeholder,
+    onChange,
+    name,
+    label,
+    error,
+    require,
+  } = props;
 
   return (
     <div className="flex flex-col items-center">
@@ -38,11 +114,12 @@ const Input = (props) => {
       <input
         className="border"
         type={type}
+        placeholder={placeholder}
         value={value}
         name={name}
         onChange={onChange}
       />
-      <p>{error}</p>
+      <p className="text-red-500 text-xs">{error}</p>
     </div>
   );
 };
