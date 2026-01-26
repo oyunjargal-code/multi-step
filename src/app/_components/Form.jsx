@@ -2,97 +2,99 @@
 
 import { useState } from "react";
 
-export const Form = () => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    userName: "",
-  });
+// import { useState } from "react";
 
-  const [formError, setFormError] = useState({
-    firstName: "",
-    lastName: "",
-    userName: "",
-  });
+// export const Form = () => {
+//   const [formData, setFormData] = useState({
+//     firstName: "",
+//     lastName: "",
+//     userName: "",
+//   });
 
-  const onChange = (event) => {
-    const { name, value } = event.target;
+//   const [formError, setFormError] = useState({
+//     firstName: "",
+//     lastName: "",
+//     userName: "",
+//   });
 
-    const newFormData = { ...formData, [name]: value };
+//   const onChange = (event) => {
+//     const { name, value } = event.target;
 
-    setFormData(newFormData);
-  };
+//     const newFormData = { ...formData, [name]: value };
 
-  const onSubmit = () => {
-    if (formData.firstName === "") {
-      setFormError((prev) => ({
-        ...prev,
-        firstName: "hooson bj bolohgui",
-      }));
-    } else {
-      setFormError((prev) => ({
-        ...prev,
-        firstName: "",
-      }));
-    }
-    if (formData.lastName === "") {
-      setFormError((prev) => ({
-        ...prev,
-        lastName: "hooson bj bolohgui",
-      }));
-    } else {
-      setFormError((prev) => ({
-        ...prev,
-        lastName: "",
-      }));
-    }
-    if (formData.userName === "") {
-      setFormError((prev) => ({
-        ...prev,
-        userName: "hooson bj bolohgui",
-      }));
-    } else {
-      setFormError((prev) => ({
-        ...prev,
-        userName: "",
-      }));
-    }
-    console.log("hi");
-  };
+//     setFormData(newFormData);
+//   };
 
-  return (
-    <div>
-      <Input
-        name="firstName"
-        label="First name"
-        placeholder="Нэрээ оруулна уу?"
-        value={formData.firstName}
-        onChange={onChange}
-        error={formError.firstName}
-        require={false}
-      />
-      <Input
-        name="lastName"
-        label="Last name"
-        placeholder="Овогоо оруулна уу?"
-        value={formData.lastName}
-        onChange={onChange}
-        error={formError.lastName}
-        require={false}
-      />
-      <Input
-        name="userName"
-        label="User name"
-        placeholder="Хэрэглэгчийн нэрээ оруулна уу?"
-        value={formData.userName}
-        onChange={onChange}
-        error={formError.userName}
-        require={false}
-      />
-      <button onClick={onSubmit}>Continue</button>
-    </div>
-  );
-};
+//   const onSubmit = () => {
+//     if (formData.firstName === "") {
+//       setFormError((prev) => ({
+//         ...prev,
+//         firstName: "hooson bj bolohgui",
+//       }));
+//     } else {
+//       setFormError((prev) => ({
+//         ...prev,
+//         firstName: "",
+//       }));
+//     }
+//     if (formData.lastName === "") {
+//       setFormError((prev) => ({
+//         ...prev,
+//         lastName: "hooson bj bolohgui",
+//       }));
+//     } else {
+//       setFormError((prev) => ({
+//         ...prev,
+//         lastName: "",
+//       }));
+//     }
+//     if (formData.userName === "") {
+//       setFormError((prev) => ({
+//         ...prev,
+//         userName: "hooson bj bolohgui",
+//       }));
+//     } else {
+//       setFormError((prev) => ({
+//         ...prev,
+//         userName: "",
+//       }));
+//     }
+//     console.log("hi");
+//   };
+
+//   return (
+//     <div>
+//       <Input
+//         name="firstName"
+//         label="First name"
+//         placeholder="Нэрээ оруулна уу?"
+//         value={formData.firstName}
+//         onChange={onChange}
+//         error={formError.firstName}
+//         require={false}
+//       />
+//       <Input
+//         name="lastName"
+//         label="Last name"
+//         placeholder="Овогоо оруулна уу?"
+//         value={formData.lastName}
+//         onChange={onChange}
+//         error={formError.lastName}
+//         require={false}
+//       />
+//       <Input
+//         name="userName"
+//         label="User name"
+//         placeholder="Хэрэглэгчийн нэрээ оруулна уу?"
+//         value={formData.userName}
+//         onChange={onChange}
+//         error={formError.userName}
+//         require={false}
+//       />
+//       <button onClick={onSubmit}>Continue</button>
+//     </div>
+//   );
+// };
 
 // import { useState } from "react";
 // import { Continue } from "./Continue";
@@ -172,3 +174,38 @@ export const Form = () => {
 //     </div>
 //   )
 // }
+export const Form = () => {
+  const [input, setInput] = useState("");
+  const [items, setItems] = useState([]);
+
+  const onChange = (e) => {
+    setInput(e.target.value);
+    console.log(e.target.value);
+  };
+
+  const add = () => {
+    setItems([...items, input]);
+  };
+  console.log(add);
+  return (
+    <div>
+      <div>
+        <input
+          onChange={(e) => {
+            onChange(e);
+          }}
+          value={input}
+          type="text"
+          className="border"
+        />
+        <button onClick={add}>Submit</button>
+        <p>Tanii bichsen text</p>{" "}
+        <ul>
+          {items.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
