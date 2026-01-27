@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { FormUserInfo } from "./FormUserInfo";
 import { FormEmailPassport } from "./FormEmailPassport";
+import { FormBirthday } from "./FormBirthday";
 
 export const Form = () => {
   const [step, setStep] = useState(1);
@@ -15,6 +16,8 @@ export const Form = () => {
     phoneNumber: "",
     password: "",
     confirmPassword: "",
+    dateOfBirthday: "",
+    profileImage: "",
   });
 
   const [formError, setFormError] = useState({
@@ -25,6 +28,8 @@ export const Form = () => {
     phoneNumber: "",
     password: "",
     confirmPassword: "",
+    dateOfBirthday: "",
+    profileImage: "",
   });
 
   const onChange = (event) => {
@@ -41,10 +46,12 @@ export const Form = () => {
 
   const handleNext = () => {
     setStep(step + 1);
+    // setStep((prev) => prev + 1);
   };
 
   const handlePrev = () => {
     setStep(step - 1);
+    // setStep((prev) => prev - 1);
   };
 
   return (
@@ -69,6 +76,16 @@ export const Form = () => {
             )}
             {step === 2 && (
               <FormEmailPassport
+                formData={formData}
+                onChange={onChange}
+                formError={formError}
+                updateFormError={updateFormError}
+                handlePrev={handlePrev}
+                handleNext={handleNext}
+              />
+            )}
+            {step === 3 && (
+              <FormBirthday
                 formData={formData}
                 onChange={onChange}
                 formError={formError}

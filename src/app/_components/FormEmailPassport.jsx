@@ -8,7 +8,7 @@ export const FormEmailPassport = ({
   handleNext,
   handlePrev,
 }) => {
-  const onSubmit = () => {
+  const onValidation = () => {
     const { eMail, phoneNumber, password, confirmPassword } = formData;
     const newError = {};
 
@@ -25,10 +25,20 @@ export const FormEmailPassport = ({
     if (confirmPassword === "") {
       newError["confirmPassword"] = "hooson bj bolohgui";
     }
-    console.log(newError);
+    console.log(handleNext);
+    const isValid = Object.keys(newError).length === 0;
     updateFormError(newError);
-    console.log("hi");
+    return isValid;
   };
+
+  const onSubmit = () => {
+    const isValid = onValidation();
+
+    if (isValid) {
+      handleNext();
+    }
+  };
+  console.log(handleNext);
 
   return (
     <div>
