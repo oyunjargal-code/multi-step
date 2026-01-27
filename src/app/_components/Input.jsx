@@ -7,11 +7,6 @@ export const Input = (props) => {
     name,
     label,
     error,
-    require,
-    eMail,
-    phoneNumber,
-    password,
-    confirmPassword,
   } = props;
   console.log(error);
 

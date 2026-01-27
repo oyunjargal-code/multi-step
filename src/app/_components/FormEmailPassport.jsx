@@ -80,7 +80,6 @@ export const FormEmailPassport = ({
       />
 
       <div className="flex justify-center ">
-        {/* <button onClick={onSubmit}>Step2</button> */}
         <button
           onClick={handlePrev}
           className="bg-[#121315] text-white rounded-sm mt-21 p-1"
