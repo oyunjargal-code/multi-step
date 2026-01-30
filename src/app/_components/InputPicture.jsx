@@ -9,7 +9,7 @@ export const InputPicture = (props) => {
     error,
     ref,
     image,
-    deletPicture,
+
   } = props;
   console.log(error);
 
@@ -44,10 +44,10 @@ export const InputPicture = (props) => {
           <>
             <div>
               <button
-                onClick={deletPicture}
-                className="absolute top-1 right-1 z-20 bg-white rounded-full p-1 shadow"
+       
+                className="absolute top-1 right-1 z-20 text-[#E14942] text-xl rounded-full p-1 shadow"
               >
-                <img className="w-5 h-5" src="./closeBtn.png" alt="closeBtn" />
+               x
               </button>
             </div>
             <img

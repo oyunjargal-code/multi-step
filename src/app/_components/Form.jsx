@@ -75,11 +75,11 @@ export const Form = () => {
     // setStep((prev) => prev - 1);
   };
 
-  const deletPicture = (e) => {
-    e.preventDefault();
-    onChange({ target: { value: "", files: null } });
-    console.log("hi");
-  };
+  // const deletPicture = (e) => {
+  //   e.preventDefault();
+  //   onChange({ target: { value: "", files: null } });
+  //   console.log("hi");
+  // };
   return (
     <div className="bg-[#f4f4f4] h-screen">
       <div className="flex justify-center items-center min-h-screen">
@@ -125,7 +125,7 @@ export const Form = () => {
                   image={image}
                   difference={difference}
                   setImage={setImage}
-                  deletPicture={deletPicture}
+               
                 />
               </>
             )}
