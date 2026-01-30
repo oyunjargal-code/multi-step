@@ -9,7 +9,7 @@ export const InputPicture = (props) => {
     error,
     ref,
     image,
-    setImage,
+    deletPicture,
   } = props;
   console.log(error);
 
@@ -28,7 +28,6 @@ export const InputPicture = (props) => {
           name={name}
           onChange={onChange}
           ref={ref}
-          setImage={setImage}
         />
         {!image && (
           <div className="flex flex-col justify-center items-center w-full h-full">
@@ -45,7 +44,7 @@ export const InputPicture = (props) => {
           <>
             <div>
               <button
-                onClick={() => setImage(null)}
+                onClick={deletPicture}
                 className="absolute top-1 right-1 z-20 bg-white rounded-full p-1 shadow"
               >
                 <img className="w-5 h-5" src="./closeBtn.png" alt="closeBtn" />
