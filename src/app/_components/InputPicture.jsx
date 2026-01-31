@@ -10,7 +10,7 @@ export const InputPicture = (props) => {
     ref,
     image,
     uploadFile,
-
+    deletPicture,
   } = props;
   console.log(error);
 
@@ -46,10 +46,11 @@ export const InputPicture = (props) => {
           <>
             <div>
               <button
-       
+                onClick={deletPicture}
+                type="button"
                 className="absolute top-1 right-1 z-20 text-[#E14942] text-xl rounded-full p-1 shadow"
               >
-               x
+                x
               </button>
             </div>
             <img

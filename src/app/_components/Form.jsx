@@ -7,7 +7,7 @@ import { FormEmailPassport } from "./FormEmailPassport";
 import { FormBirthday } from "./FormBirthday";
 import { Success } from "./Success";
 import { UI } from "./UI";
-import { differenceInYears } from "date-fns";
+// import { differenceInYears } from "date-fns";
 
 const today = new Date();
 
@@ -27,18 +27,14 @@ export const Form = () => {
     dateOfBirthday: "",
     profileImage: "",
   });
-  const difference = differenceInYears(today, formData.dateOfBirthday);
-  console.log("difference :", difference);
+  // const difference = differenceInYears(today, formData.dateOfBirthday);
+  // console.log("difference :", difference);
 
- 
-
-  const uploadFile= () =>
-  {
-    setImage(ref.current.files[0])
-    
-  }
+  const uploadFile = () => {
+    setImage(ref.current.files[0]);
+  };
   console.log("formData", formData);
-  
+
   console.log(setImage);
 
   const [formError, setFormError] = useState({
@@ -83,11 +79,17 @@ export const Form = () => {
     // setStep((prev) => prev - 1);
   };
 
-  // const deletPicture = (e) => {
-  //   e.preventDefault();
-  //   onChange({ target: { value: "", files: null } });
-  //   console.log("hi");
-  // };
+  const deletPicture = (e) => {
+    e.preventDefault();
+    if (image) {
+      URL.revokeObjectURL(image);
+    }
+    setImage(null);
+    setFormData({ ...formData, profileImage: "" });
+    if (ref.current) {
+      ref.current.value = "";
+    }
+  };
   return (
     <div className="bg-[#f4f4f4] h-screen">
       <div className="flex justify-center items-center min-h-screen">
@@ -131,10 +133,10 @@ export const Form = () => {
                   handleNext={handleNext}
                   ref={ref}
                   image={image}
-                  difference={difference}
+                  // difference={difference}
                   setImage={setImage}
                   uploadFile={uploadFile}
-               
+                  deletPicture={deletPicture}
                 />
               </>
             )}
