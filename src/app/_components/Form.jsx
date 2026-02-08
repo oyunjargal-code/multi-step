@@ -152,7 +152,16 @@ import { useRef, useState } from "react";
 
 export const Form = () => {
   const [inputValue, setInputValue] = useState("");
+  const [items, setItems] = useState([]);
+
   const onChange = (e) => setInputValue(e.target.value);
+  const add = () => {
+    if (inputValue.trim()) {
+      setItems([...items, inputValue]);
+      setInputValue("");
+    }
+  };
+  console.log(add);
 
   return (
     <div>
@@ -163,9 +172,13 @@ export const Form = () => {
           type="text"
           className="border"
         />
-        <button>Add</button>
+        <button onClick={add}>Add</button>
       </div>
-      <p>{inputValue}</p>
+      <ul>
+        {items.map((item, index) => {
+          return <li key={index}>{item}</li>;
+        })}
+      </ul>
     </div>
   );
 };
