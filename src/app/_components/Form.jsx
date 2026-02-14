@@ -150,35 +150,72 @@ import { useRef, useState } from "react";
 //   );
 // };
 
-export const Form = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [items, setItems] = useState([]);
+// export const Form = () => {
+//   const [inputValue, setInputValue] = useState("");
+//   const [items, setItems] = useState([]);
 
-  const onChange = (e) => setInputValue(e.target.value);
-  const add = () => {
-    if (inputValue.trim()) {
-      setItems([...items, inputValue]);
-      setInputValue("");
+//   const onChange = (e) => setInputValue(e.target.value);
+//   const add = () => {
+//     if (inputValue.trim()) {
+//       setItems([...items, inputValue]);
+//       setInputValue("");
+//     }
+//   };
+//   console.log(add);
+
+//   return (
+//     <div>
+//       <div>
+//         <input
+//           value={inputValue}
+//           onChange={onChange}
+//           type="text"
+//           className="border"
+//         />
+//         <button onClick={add}>Add</button>
+//       </div>
+//       <ul>
+//         {items.map((item, index) => {
+//           return <li key={index}>{item}</li>;
+//         })}
+//       </ul>
+//     </div>
+//   );
+// };
+
+export const Form = () => {
+  const [input, setInput] = useState("");
+  const [inputValue, setInputValue] = useState([]);
+
+  const inputChange = (e) => {
+    setInput(e.target.value);
+  };
+
+  const onClick = () => {
+    if (input.trim()) {
+      setInputValue([...inputValue, input]);
+      setInput("");
     }
   };
-  console.log(add);
 
   return (
     <div>
       <div>
         <input
-          value={inputValue}
-          onChange={onChange}
-          type="text"
+          value={input}
+          onChange={inputChange}
           className="border"
+          type="text"
         />
-        <button onClick={add}>Add</button>
+        <button onClick={onClick}>Add</button>
+        <ul>
+          <p>
+            {inputValue.map((item) => {
+              return <li>{item}</li>;
+            })}
+          </p>
+        </ul>
       </div>
-      <ul>
-        {items.map((item, index) => {
-          return <li key={index}>{item}</li>;
-        })}
-      </ul>
     </div>
   );
 };
