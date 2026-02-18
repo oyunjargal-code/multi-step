@@ -183,38 +183,60 @@ import { useRef, useState } from "react";
 //   );
 // };
 
-export const Form = () => {
-  const [input, setInput] = useState("");
-  const [inputValue, setInputValue] = useState([]);
+// export const Form = () => {
+//   const [input, setInput] = useState("");
+//   const [inputValue, setInputValue] = useState([]);
 
-  const inputChange = (e) => {
-    setInput(e.target.value);
-  };
+//   const inputChange = (e) => {
+//     setInput(e.target.value);
+//   };
 
-  const onClick = () => {
-    if (input.trim()) {
-      setInputValue([...inputValue, input]);
-      setInput("");
-    }
+//   const onClick = () => {
+//     if (input.trim()) {
+//       setInputValue([...inputValue, input]);
+//       setInput("");
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <div>
+//         <input
+//           value={input}
+//           onChange={inputChange}
+//           className="border"
+//           type="text"
+//         />
+//         <button onClick={onClick}>Add</button>
+//         <ul>
+//           <p>
+//             {inputValue.map((item) => {
+//               return <li>{item}</li>;
+//             })}
+//           </p>
+//         </ul>
+//       </div>
+//     </div>
+//   );
+// };
+
+export const Form0218 = () => {
+  const [inputValue, setInputValue] = useState("");
+  const [inputChange, setInputChange] = useState([]);
+  const onChange = (e) => {
+    setInputChange(e.target.value);
   };
 
   return (
     <div>
       <div>
         <input
-          value={input}
-          onChange={inputChange}
+          value={inputValue}
+          onChange={onChange}
           className="border"
           type="text"
         />
-        <button onClick={onClick}>Add</button>
-        <ul>
-          <p>
-            {inputValue.map((item) => {
-              return <li>{item}</li>;
-            })}
-          </p>
-        </ul>
+        <p>{inputValue}</p>
       </div>
     </div>
   );

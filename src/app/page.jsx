@@ -1,5 +1,5 @@
-import { Form } from "./_components/Form";
+import { Form, Form0218 } from "./_components/Form";
 
 export default function Home() {
-  return <Form />;
+  return <Form0218 />;
 }
