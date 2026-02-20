@@ -224,7 +224,7 @@ export const Form0218 = () => {
   const [inputValue, setInputValue] = useState("");
   const [inputChange, setInputChange] = useState([]);
   const onChange = (e) => {
-    setInputChange(e.target.value);
+    setInputValue(e.target.value);
   };
 
   return (
